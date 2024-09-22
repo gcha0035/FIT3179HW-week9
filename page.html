@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Regions Map</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        #vis {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <a href=" https://git.infotech.monash.edu/fit3179_32830335/week9homework">https://git.infotech.monash.edu/fit3179_32830335/week9homework</a>
+    <h1>Wine Regions of Australia</h1>
+    <div id="vis"></div>
+    
+    <script>
+        const spec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": 800,
+            "height": 600,
+            "projection": {
+                "type": "mercator",
+                "type": "mercator",
+                "center": [135, -25],
+                "scale": 1000 
+            },
+            "layer": [
+                {
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "countries"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "lightgray",
+                        "stroke": "white"
+                    }
+                },
+                {
+                    "data": {
+                        "url": "https://git.infotech.monash.edu/fit3179_32830335/week9homework/-/raw/main/Wine_Geographical_Indications_Australia_2023.topojson",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "Wine_Geographical_Indications_Australia_2023"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#ccc",
+                        "stroke": "black"
+                    }
+                },
+                {
+                    "data": {
+                        "url": "https://git.infotech.monash.edu/fit3179_32830335/week9homework/-/raw/main/Wine_Geographical_Indications_Australia_2023%20(1).topojson",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "Wine_Geographical_Indications_Australia_2023 (1)"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#ccc",
+                        "stroke": "blue"
+                    }
+                },
+                {
+                    "data": {
+                        "url": "https://git.infotech.monash.edu/fit3179_32830335/week9homework/-/raw/main/Wine_Geographical_Indications_Australia_2023%20(2).topojson",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "Wine_Geographical_Indications_Australia_2023 (2)"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#ccc",
+                        "stroke": "green"
+                    }
+                },
+                {
+                    "data": {
+                        "values": [
+                            {"region": "Swan District", "longitude": 115.872, "latitude": -31.874},
+                            {"region": "Perth Hills", "longitude": 116.048, "latitude": -32.002},
+                            {"region": "Peel", "longitude": 115.857, "latitude": -32.628},
+                            {"region": "Geographe", "longitude": 115.401, "latitude": -33.673},
+                            {"region": "Margaret River", "longitude": 115.040, "latitude": -33.949},
+                            {"region": "Blackwood Valley", "longitude": 116.080, "latitude": -34.365},
+                            {"region": "Pemberton", "longitude": 116.030, "latitude": -34.443},
+                            {"region": "Manjimup", "longitude": 116.146, "latitude": -34.245},
+                            {"region": "Great Southern", "longitude": 117.446, "latitude": -34.828},
+                            {"region": "Southern Flinders Ranges", "longitude": 138.570, "latitude": -32.598},
+                            {"region": "Clare Valley", "longitude": 138.610, "latitude": -33.834},
+                            {"region": "Barossa Valley", "longitude": 138.950, "latitude": -34.524},
+                            {"region": "Eden Valley", "longitude": 139.025, "latitude": -34.648},
+                            {"region": "Riverland", "longitude": 140.373, "latitude": -34.219},
+                            {"region": "Adelaide Plains", "longitude": 138.551, "latitude": -34.833},
+                            {"region": "Adelaide Hills", "longitude": 138.811, "latitude": -34.938},
+                            {"region": "McLaren Vale", "longitude": 138.553, "latitude": -35.233},
+                            {"region": "Kangaroo Island", "longitude": 137.350, "latitude": -35.750},
+                            {"region": "Southern Fleurieu", "longitude": 138.501, "latitude": -35.470},
+                            {"region": "Currency Creek", "longitude": 138.782, "latitude": -35.468},
+                            {"region": "Langhorne Creek", "longitude": 139.051, "latitude": -35.290},
+                            {"region": "Padthaway", "longitude": 140.528, "latitude": -36.649},
+                            {"region": "Mount Benson", "longitude": 139.752, "latitude": -37.013},
+                            {"region": "Wrattonbully", "longitude": 140.759, "latitude": -37.021},
+                            {"region": "Robe", "longitude": 139.751, "latitude": -37.163},
+                            {"region": "Coonawarra", "longitude": 140.838, "latitude": -37.288},
+                            {"region": "Mount Gambier", "longitude": 140.773, "latitude": -37.831},
+                            {"region": "South Burnett", "longitude": 151.858, "latitude": -26.663},
+                            {"region": "Granite Belt", "longitude": 151.956, "latitude": -28.663},
+                            {"region": "New England Australia", "longitude": 151.610, "latitude": -30.400},
+                            {"region": "Hastings River", "longitude": 152.842, "latitude": -31.430},
+                            {"region": "Hunter", "longitude": 151.750, "latitude": -32.803},
+                            {"region": "Mudgee", "longitude": 149.588, "latitude": -32.609},
+                            {"region": "Orange", "longitude": 149.101, "latitude": -33.284},
+                            {"region": "Cowra", "longitude": 148.691, "latitude": -33.837},
+                            {"region": "Riverina", "longitude": 146.888, "latitude": -35.351},
+                            {"region": "Hilltops", "longitude": 148.295, "latitude": -34.321},
+                            {"region": "Southern Highlands", "longitude": 150.418, "latitude": -34.482},
+                            {"region": "Gundagai", "longitude": 148.105, "latitude": -35.068},
+                            {"region": "Canberra District", "longitude": 149.123, "latitude": -35.306},
+                            {"region": "Shoalhaven Coast", "longitude": 150.660, "latitude": -34.950},
+                            {"region": "Tumbarumba", "longitude": 148.130, "latitude": -35.765},
+                            {"region": "Perricoota", "longitude": 144.556, "latitude": -35.625},
+                            {"region": "Murray Darling", "longitude": 143.797, "latitude": -34.321},
+                            {"region": "Swan Hill", "longitude": 143.552, "latitude": -35.337},
+                            {"region": "Goulburn Valley", "longitude": 145.357, "latitude": -36.376},
+                            {"region": "Rutherglen", "longitude": 146.467, "latitude": -36.057},
+                            {"region": "Glenrowan", "longitude": 146.233, "latitude": -36.480},
+                            {"region": "Beechworth", "longitude": 146.688, "latitude": -36.357},
+                            {"region": "King Valley", "longitude": 146.461, "latitude": -36.753},
+                            {"region": "Alpine Valleys", "longitude": 146.986, "latitude": -36.722},
+                            {"region": "Strathbogie Ranges", "longitude": 145.567, "latitude": -36.855},
+                            {"region": "Upper Goulburn", "longitude": 145.800, "latitude": -37.216},
+                            {"region": "Heathcote", "longitude": 144.707, "latitude": -36.923},
+                            {"region": "Bendigo", "longitude": 144.279, "latitude": -36.758},
+                            {"region": "Pyrenees", "longitude": 143.405, "latitude": -37.204},
+                            {"region": "Macedon Ranges", "longitude": 144.584, "latitude": -37.433},
+                            {"region": "Sunbury", "longitude": 144.733, "latitude": -37.579},
+                            {"region": "Grampians", "longitude": 142.519, "latitude": -37.127},
+                            {"region": "Henty", "longitude": 141.857, "latitude": -38.012},
+                            {"region": "Geelong", "longitude": 144.361, "latitude": -38.148},
+                            {"region": "Yarra Valley", "longitude": 145.431, "latitude": -37.731},
+                            {"region": "Mornington Peninsula", "longitude": 145.073, "latitude": -38.341},
+                            {"region": "Gippsland", "longitude": 146.408, "latitude": -38.034},
+                            {"region": "Tasmania", "longitude": 147.324, "latitude": -42.735}
+                        ]
+                    },
+                    "mark": "circle",
+                    "encoding": {
+                        "longitude": {"field": "longitude", "type": "quantitative"},
+                        "latitude": {"field": "latitude", "type": "quantitative"},
+                        "size": {"value": 100},
+                        "color": {"value": "purple"},
+                        "tooltip": {"field": "region", "type": "nominal"}
+                    }
+                }
+            ]
+        };
+
+        vegaEmbed('#vis', spec).then(result => {
+            // Access the Vega view instance if needed
+        }).catch(console.error);
+    </script>
+    </center>
+</body>
+</html>
